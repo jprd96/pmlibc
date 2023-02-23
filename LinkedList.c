@@ -167,56 +167,56 @@ int main(void) {
 		scanf("%d", &x);
 		insertBack(x);
 	}
-	printf("Choose an operation: \n");
-	printf("1. Add an element at the front\n");
-	printf("2. Add an element at the back\n");
+    printf("Choose an operation: \n");
+    printf("1. Add an element at the front\n");
+    printf("2. Add an element at the back\n");
     printf("3. Insert an element at an index\n");
     printf("4. Delete an element at an index\n");
-	printf("5. Delete the list\n");
-	printf("6. Reverse the list (changes the original list)\n");
-	printf("7. Print the list in reverse (does not change the original list)\n");
-	printf("Your choice: ");
-	scanf("%d", &option);
+    printf("5. Delete the list\n");
+    printf("6. Reverse the list (changes the original list)\n");
+    printf("7. Print the list in reverse (does not change the original list)\n");
+    printf("Your choice: ");
+    scanf("%d", &option);
 
-	switch(option) {
-		case 1:
-			printf("Enter a number to add to the front: ");
-			scanf("%d", &x);
-			insertFront(x);
-			printf("List: ");
+    switch(option) {
+        case 1:
+            printf("Enter a number to add to the front: ");
+            scanf("%d", &x);
+            insertFront(x);
+            printf("List: ");
             printList(head);
-			break;
+            break;
 
-		case 2:
+        case 2:
             printf("Enter a number to add to the back: ");
-			scanf("%d", &x);
-			insertBack(x);
-			printf("List: ");
+            scanf("%d", &x);
+            insertBack(x);
+            printf("List: ");
             printList(head);
-			break;
+            break;
 
-		case 3:
+        case 3:
             printf("Enter a number and index to add: ");
-			scanf("%d %d", &x, &n);
-			insertAt(x, n);
-			printf("List: ");
+            scanf("%d %d", &x, &n);
+            insertAt(x, n);
+            printf("List: ");
             printList(head);
-			break;
+            break;
 
-		case 4:
-			printf("Enter the index of the number to delete: ");
-			scanf("%d", &n);
-			deleteAt(n);
-			printf("List: ");
+        case 4:
+            printf("Enter the index of the number to delete: ");
+            scanf("%d", &n);
+            deleteAt(n);
+            printf("List: ");
             printList(head);
-			break;
+            break;
 
         case 5:
             deleteList(head);
             if(head == NULL) {
-			    printf("List: []");
+                printf("List: []");
             }
-			break;
+            break;
 
         case 6:
             reverse(head);
@@ -226,9 +226,9 @@ int main(void) {
 
         case 7:
             printf("List: ");
-			printReverse(head);
-			break;
-	}
+            printReverse(head);
+            break;
+    }
     printf("\n");
     return 0;
 }
