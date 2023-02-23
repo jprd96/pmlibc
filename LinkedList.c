@@ -171,7 +171,7 @@ int main(void) {
 	printf("1. Add an element at the front\n");
 	printf("2. Add an element at the back\n");
     printf("3. Insert an element at an index\n");
-	printf("4. Delete an element at an index\n");
+    printf("4. Delete an element at an index\n");
 	printf("5. Delete the list\n");
 	printf("6. Reverse the list (changes the original list)\n");
 	printf("7. Print the list in reverse (does not change the original list)\n");
