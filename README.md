@@ -1,3 +1,3 @@
 # pmlibc
 
-A poor man's C Library
+A poor man's C Library.
