@@ -59,8 +59,8 @@ Node* findMin(Node* root) {
     greater than root's value, recurse right. If it's the same as the root, 
     this is the node to delete. If the root has no children, simply free it. If 
     the root has one child, make a copy before you delete the child and recurse 
-	down. If the root has two children, first find the minimum of the right.
-	Then copy the min to the root and then delete the min.  */
+    down. If the root has two children, first find the minimum of the right.
+    Then copy the min to the root and then delete the min.  */
 Node *delete(struct Node *root, int data) {
 	if(!search(root, data)) {
 		return root;
