@@ -10,9 +10,9 @@ typedef struct Node {
 } Node;
 
 /*  This function inserts a new node into a BST and returns the new root.
-	If BST is empty, the new node = the new tree. If the data to be entered is 
-	less than root's value, recurse left. If it's greater than root's value, 
-	recurse right.  */
+    If BST is empty, the new node = the new tree. If the data to be entered is 
+    less than root's value, recurse left. If it's greater than root's value,
+    recurse right.  */
 Node *insert(Node *root, int data) {
 	if(root == NULL) {
 		root = (Node*)malloc(sizeof(Node));
@@ -55,11 +55,11 @@ Node* findMin(Node* root) {
 }
 
 /*  This function deletes a node and returns the new root.
-	If the data to be deleted is less than root's value, recurse left. If it's 
-	greater than root's value, recurse right. If it's the same as the root, 
-	this is the node to delete. If the root has no children, simply free it. If 
-	the root has one child, make a copy before you delete the child and recurse 
-	down. If the root has two children, first find the minimum of the right. 
+    If the data to be deleted is less than root's value, recurse left. If it's 
+    greater than root's value, recurse right. If it's the same as the root, 
+    this is the node to delete. If the root has no children, simply free it. If 
+    the root has one child, make a copy before you delete the child and recurse 
+	down. If the root has two children, first find the minimum of the right.
 	Then copy the min to the root and then delete the min.  */
 Node *delete(struct Node *root, int data) {
 	if(!search(root, data)) {
@@ -104,9 +104,9 @@ int getHeight(Node* root) {
 }
 
 /*  This function prints the pre-order traversal of a BST.
-	Start at the root, traverse depth first, and end at the right-most node. 
-	Useful for creating a copy of a BST. Place the nodes in an array with 
-	pre-order and then perform insert on a new tree for each value.  */
+    Start at the root, traverse depth first, and end at the right-most node.
+    Useful for creating a copy of a BST. Place the nodes in an array with 
+    pre-order and then perform insert on a new tree for each value. */
 void preOrder(Node *root) {
 	if(root == NULL) {
 		return;
@@ -118,8 +118,8 @@ void preOrder(Node *root) {
 }
 
 /*  This function prints the in-order traversal of a BST.
-	Start at the left-most node and end at the right-most node. This prints the 
-	nodes in sorted order. */
+    Start at the left-most node and end at the right-most node. This prints the 
+    nodes in sorted order.  */
 void inOrder(Node *root) {
 	if(root == NULL) {
 		return;
@@ -130,8 +130,8 @@ void inOrder(Node *root) {
 }
 
 /*  This function prints the post-order traversal of a BST.
-	Start at the left-most node and end at the root. Useful for deleting a tree 
-	from leaf to root. */
+    Start at the left-most node and end at the root. Useful for deleting a tree 
+    from leaf to root.  */
 void postOrder(Node *root) {
 	if(root == NULL) {
 		return;
