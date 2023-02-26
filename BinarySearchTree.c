@@ -9,8 +9,8 @@ typedef struct Node {
 	struct Node *right;
 } Node;
 
-/*  This function inserts a new node into a BST and returns the new root. 
-    If BST is empty, the new node = the new tree. If the data to be entered is 
+/*  This function inserts a new node into a BST and returns the new root.
+	If BST is empty, the new node = the new tree. If the data to be entered is 
 	less than root's value, recurse left. If it's greater than root's value, 
 	recurse right.  */
 Node *insert(Node *root, int data) {
@@ -55,7 +55,7 @@ Node* findMin(Node* root) {
 }
 
 /*  This function deletes a node and returns the new root.
-    If the data to be deleted is less than root's value, recurse left. If it's 
+	If the data to be deleted is less than root's value, recurse left. If it's 
 	greater than root's value, recurse right. If it's the same as the root, 
 	this is the node to delete. If the root has no children, simply free it. If 
 	the root has one child, make a copy before you delete the child and recurse 
