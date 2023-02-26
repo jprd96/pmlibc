@@ -210,11 +210,11 @@ int main(void) {
         case 6:
             postOrder(root);
             break;
-	
+		
 		case 7:
-            deleteBST(root);
+			deleteBST(root);
 			printf("Tree is now empty.");
-            break;
+			break;
     }
 	printf("\n");
     return 0;
