@@ -16,40 +16,40 @@ typedef struct Node {
 Node *insert(Node *root, int data) {
 	if(root == NULL) {
 		root = (Node*)malloc(sizeof(Node));
-		(*root).left = NULL;
-		(*root).data = data;
-		(*root).right = NULL;
+		root->left = NULL;
+		root->data = data;
+		root->right = NULL;
 	} 
-	else if(data <= (*root).data) {
-		(*root).left = insert((*root).left, data);
+	else if(data <= root->data) {
+		root->left = insert(root->left, data);
 	} 
 	else {
-		(*root).right = insert((*root).right, data);
+		root->right = insert(root->right, data);
 	}
 	return root;
 }
 
 /*  This function serves as a helper to delete().  */
-int search(Node* root, int data) {
+int search(Node *root, int data) {
 	if(root == NULL) { 
 		return 0; 
 	}
-	if((*root).data == data) { 
+	if(root->data == data) { 
 		return 1; 
 	}
-    int inLeft = search((*root).left, data);
+    int inLeft = search(root->left, data);
     if(inLeft) { 
 		return 1; 
 	}
-    int inRight = search((*root).right, data);
+    int inRight = search(root->right, data);
     return inRight;
 
 }
 
 /*  This function serves as a helper to delete().  */
-Node* findMin(Node* root) {
-	while((*root).left != NULL) {
-		root = (*root).left;
+Node* findMin(Node *root) {
+	while(root->left != NULL) {
+		root = root->left;
 	}
 	return root;
 }
@@ -65,42 +65,42 @@ Node *delete(struct Node *root, int data) {
 	if(!search(root, data)) {
 		return root;
 	}
-	else if(data < (*root).data) {
-		(*root).left = delete((*root).left, data);
+	else if(data < root->data) {
+		root->left = delete(root->left, data);
 	}
-	else if(data > (*root).data) {
-		(*root).right = delete((*root).right, data);
+	else if(data > root->data) {
+		root->right = delete(root->right, data);
 	}
 	else {
-		if((*root).left == NULL && (*root).right == NULL) {
+		if(root->left == NULL && root->right == NULL) {
 			free(root);
 			root = NULL;
 		}
-		else if((*root).left != NULL && (*root).right == NULL) {
-			Node *temp = (*root).left;
+		else if(root->left != NULL && root->right == NULL) {
+			Node *temp = root->left;
 			free(temp);
-			root = (*root).left;
+			root = root->left;
 		}
-		else if((*root).left == NULL && (*root).right != NULL) {
-			Node *temp = (*root).right;
+		else if(root->left == NULL && root->right != NULL) {
+			Node *temp = root->right;
 			free(temp);
-			root = (*root).right;
+			root = root->right;
 		}
 		else {
 			Node *temp = findMin(root->right);
-			(*root).data = (*temp).data;
-			(*root).right = delete((*root).right, (*temp).data); 
+			root->data = temp->data;
+			root->right = delete(root->right, temp->data); 
 		}
 	}
 	return root;
 }
 
 /*  This function returns the height of a BST.  */
-int getHeight(Node* root) {
+int getHeight(Node *root) {
 	if(root == NULL) {
 		return -1;
 	}
-	return((max(getHeight((*root).left), getHeight((*root).right))) + 1);
+	return((max(getHeight(root->left), getHeight(root->right))) + 1);
 }
 
 /*  This function prints the pre-order traversal of a BST.
@@ -111,9 +111,9 @@ void preOrder(Node *root) {
 	if(root == NULL) {
 		return;
 	}
-	printf("%d ", (*root).data);
-	preOrder((*root).left);
-	preOrder((*root).right);
+	printf("%d ", root->data);
+	preOrder(root->left);
+	preOrder(root->right);
 
 }
 
@@ -124,9 +124,9 @@ void inOrder(Node *root) {
 	if(root == NULL) {
 		return;
 	}
-	inOrder((*root).left);
-	printf("%d ", (*root).data);
-	inOrder((*root).right);
+	inOrder(root->left);
+	printf("%d ", root->data);
+	inOrder(root->right);
 }
 
 /*  This function prints the post-order traversal of a BST.
@@ -136,9 +136,9 @@ void postOrder(Node *root) {
 	if(root == NULL) {
 		return;
 	}
-	postOrder((*root).left);
-	postOrder((*root).right);
-	printf("%d ", (*root).data);
+	postOrder(root->left);
+	postOrder(root->right);
+	printf("%d ", root->data);
 }
 
 /*  This function frees each node and its children and sets head to null.  */
@@ -146,8 +146,8 @@ void deleteBST(Node *root) {
 	if(root == NULL) {
 		return;
 	}
-	deleteBST((*root).left);
-    deleteBST((*root).right);
+	deleteBST(root->left);
+    deleteBST(root->right);
     free(root);
 	root = NULL;
 }
@@ -213,7 +213,7 @@ int main(void) {
 		
 		case 7:
 			deleteBST(root);
-			printf("Tree is now empty.");
+			printf("Tree is empty.");
 			break;
     }
 	printf("\n");

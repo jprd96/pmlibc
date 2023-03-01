@@ -12,13 +12,13 @@ Node *head;
     To refresh our memory, *temp points to an address. Printing temp will print 
     the address. To work with temp's data, we need to de-reference it (*tmp). 
     To insert x, create a *temp node pointer and set it to a new address in 
-    memory. Set temp's data to x. We could've also set temp->data to x.  */
+    memory. Set temp's data to x. (*temp).data and temp->data are the same. */
 void insertFront(int x) { 
     Node *temp; 
     temp = (Node*)malloc(sizeof(Node));
     
-    (*temp).data = x;
-    (*temp).next = head;
+    temp->data = x;
+    temp->next = head;
     head = temp;
 }
 
@@ -34,14 +34,14 @@ void insertBack(int x) {
     temp = (Node*)malloc(sizeof(Node));
     prev = (Node*)malloc(sizeof(Node));
 
-    (*temp).data = x;
-    (*temp).next = NULL;
+    temp->data = x;
+    temp->next = NULL;
 
     prev = head;
-    while((*prev).next != NULL) {
-        prev = (*prev).next;
+    while(prev->next != NULL) {
+        prev = prev->next;
     }
-    (*prev).next = temp;
+    prev->next = temp;
 }
 
 /*  This is a helper function for out-of-bounds checks in insertAt() and 
@@ -51,7 +51,7 @@ int size() {
     Node* curr = head;
     while (curr != NULL) {
         count++;
-        curr = (*curr).next;
+        curr = curr->next;
     }
     return count;
 }
@@ -77,25 +77,25 @@ void insertAt(int x, int idx) {
 
     if(idx == 0) {
         temp = head;
-        (*new_node).data = x;
+        new_node->data = x;
         head = new_node;
-        (*head).next = (*temp).next;
+        head->next = temp->next;
 	}
 
-	(*new_node).data = x;
+	new_node->data = x;
     
 	prev = head;
 	temp = head;
 
-	for(int i=0; i<idx+1; i++) {
-        temp = (*temp).next;
+	for(int i = 0; i < idx + 1; i++) {
+        temp = temp->next;
     }
-	for(int i=0; i<idx-1; i++) {
-        prev = (*prev).next;
+	for(int i = 0; i < idx - 1; i++) {
+        prev = prev->next;
     }
 
-	(*prev).next = new_node;
-	(*new_node).next = temp;
+	prev->next = new_node;
+	new_node->next = temp;
 }
 
 /*  This function deletes a node at a chosen index of a 0-indexed linked list.
@@ -116,18 +116,18 @@ void deleteAt(int idx) {
 	temp = head;
 
     if(idx == 0) {
-    	head = (*temp).next;
+    	head = temp->next;
         free(temp);
     	return;
     }
 
-	for(int i=0; i<idx+1; i++)
-		temp = (*temp).next;
+	for(int i = 0; i < idx + 1; i++)
+		temp = temp->next;
 	
-	for(int i=0; i<idx-1; i++)
-		prev = (*prev).next;
+	for(int i = 0; i < idx - 1; i++)
+		prev = prev->next;
 
-	(*prev).next = temp;
+	prev->next = temp;
 }
 
 /*  This function reverses and changes the original linked list. If the list is 
@@ -135,16 +135,16 @@ void deleteAt(int idx) {
     node to save the the root's next node because we eventually want to set 
     root.next to null.  */
 void reverse(Node *root) {
-    if((*root).next == NULL) {
+    if(root->next == NULL) {
 		head = root;
 		return;
 	}
 
-	reverse((*root).next);
+	reverse(root->next);
 	Node *temp;
-	temp = (*root).next;
-	(*temp).next = root;
-	(*root).next = NULL;
+	temp = root->next;
+	temp->next = root;
+	root->next = NULL;
 }
 
 /*  This funcion prints the linked list by recursing to each node's next.  */
@@ -173,7 +173,7 @@ void deleteList(Node *root) {
     Node *tmp;
     while(root != NULL) {
         tmp = root;
-        root = (*root).next;
+        root = root->next;
         free(tmp);
     }
 	head = NULL;
@@ -191,7 +191,7 @@ int main(void) {
 	scanf("%d", &x);
 	insertFront(x);
 
-	for(int i=0; i<n-1; i++) {
+	for(int i = 0; i < n - 1; i++) {
 		scanf("%d", &x);
 		insertBack(x);
 	}
